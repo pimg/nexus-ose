@@ -84,7 +84,7 @@
             "source": {
                "type": "Git",
                "git": {
-                  "uri": "https://github.com/jorgemoralespou/nexus-ose",
+                  "uri": "https://github.com/pimg/nexus-ose",
                   "ref": "master"
                },
                "contextDir": "builders/wildfly-nexus/9.0"
@@ -135,7 +135,7 @@
             "source": {
                "type": "Git",
                "git": {
-                  "uri": "https://github.com/jorgemoralespou/nexus-ose",
+                  "uri": "https://github.com/pimg/nexus-ose",
                   "ref": "master"
                },
                "contextDir": "builders/wildfly-nexus/10.0"
