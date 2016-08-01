@@ -10,7 +10,7 @@
          "apiVersion": "v1",
          "metadata": {
             "name": "nexus",
-            "namespace": "ci"
+            "namespace": "sample-project"
          }
       },
       {
@@ -18,7 +18,7 @@
          "apiVersion": "v1",
          "metadata": {
             "name": "nexus",
-            "namespace": "ci"
+            "namespace": "sample-project"
          },
          "spec": {
             "triggers": [
@@ -42,7 +42,7 @@
             "source": {
                "type": "Git",
                "git": {
-                  "uri": "https://github.com/jorgemoralespou/nexus-ose",
+                  "uri": "https://github.com/pimg/nexus-ose",
                   "ref": "master"
                },
                "contextDir": "nexus/nexus-container"
@@ -53,7 +53,7 @@
                   "from": {
                      "kind": "ImageStreamTag",
                      "name": "centos:7",
-                     "namespace": "ci"
+                     "namespace": "sample-project"
                   }
                }
             },
@@ -61,7 +61,7 @@
                "to": {
                   "kind": "ImageStreamTag",
                   "name": "nexus:latest",
-                  "namespace": "ci"
+                  "namespace": "sample-project"
                }
             },
             "resources": {}
@@ -72,7 +72,7 @@
          "apiVersion": "v1",
          "metadata": {
             "name": "centos",
-            "namespace": "ci"
+            "namespace": "sample-project"
          },
          "spec": {
             "dockerImageRepository": "library/centos:centos7"
@@ -83,7 +83,7 @@
          "apiVersion": "v1",
          "metadata": {
             "name": "nexus",
-            "namespace": "ci"
+            "namespace": "sample-project"
          },
          "spec": {
             "dockerImageRepository": "",
@@ -99,7 +99,7 @@
          "apiVersion": "v1",
          "metadata": {
             "name": "nexus-ephemeral",
-            "namespace": "ci",
+            "namespace": "sample-project",
             "annotations": {
                "description": "Nexus service, with ephemeral storage. Scaling to more than one replica is not supported",
                "tags": "repository-managers,nexus"
@@ -140,7 +140,7 @@
                "apiVersion": "v1",
                "metadata": {
                   "name": "nexus",
-                  "namespace": "ci"
+                  "namespace": "sample-project"
                },
                "spec": {
                   "strategy": {
@@ -175,7 +175,7 @@
                            "from": {
                               "kind": "ImageStreamTag",
                               "name": "${IMAGE_NAME}:${IMAGE_TAG}",
-                              "namespace": "ci"
+                              "namespace": "sample-project"
                            }
                         }
                      }
@@ -255,7 +255,7 @@
                "apiVersion": "v1",
                "metadata": {
                   "name": "nexus",
-                  "namespace": "ci"
+                  "namespace": "sample-project"
                },
                "spec": {
                   "host": "${APPLICATION_HOSTNAME}",
@@ -270,7 +270,7 @@
                "apiVersion": "v1",
                "metadata": {
                   "name": "nexus",
-                  "namespace": "ci"
+                  "namespace": "sample-project"
                },
                "spec": {
                   "ports": [
@@ -294,7 +294,7 @@
          "apiVersion": "v1",
          "metadata": {
             "name": "nexus-persistent",
-            "namespace": "ci",
+            "namespace": "sample-project",
             "annotations": {
                "description": "Nexus service, with persistent storage. Scaling to more than one replica is not supported",
                "tags": "repository-managers,nexus"
@@ -341,7 +341,7 @@
                "apiVersion": "v1",
                "metadata": {
                   "name": "nexus-claim",
-                  "namespace": "ci"
+                  "namespace": "sample-project"
                },
                "spec": {
                   "accessModes": [
@@ -360,7 +360,7 @@
                "apiVersion": "v1",
                "metadata": {
                   "name": "nexus",
-                  "namespace": "ci"
+                  "namespace": "sample-project"
                },
                "spec": {
                   "strategy": {
@@ -395,7 +395,7 @@
                            "from": {
                               "kind": "ImageStreamTag",
                               "name": "${IMAGE_NAME}:${IMAGE_TAG}",
-                              "namespace": "ci"
+                              "namespace": "sample-project"
                            }
                         }
                      }
@@ -475,7 +475,7 @@
                "apiVersion": "v1",
                "metadata": {
                   "name": "nexus",
-                  "namespace": "ci"
+                  "namespace": "sample-project"
                },
                "spec": {
                   "host": "${APPLICATION_HOSTNAME}",
@@ -490,7 +490,7 @@
                "apiVersion": "v1",
                "metadata": {
                   "name": "nexus",
-                  "namespace": "ci"
+                  "namespace": "sample-project"
                },
                "spec": {
                   "ports": [
