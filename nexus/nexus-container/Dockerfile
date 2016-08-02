@@ -29,9 +29,9 @@ RUN mkdir -p /opt/nexus/nexus \
   && mv /tmp/nexus-${NEXUS_VERSION}/* /opt/nexus/nexus/ \
   && rm -rf /tmp/nexus-${NEXUS_VERSION}
 
-RUN  chmod 777 $NEXUS_HOME \ 
+RUN  chmod 777 $NEXUS_HOME \
    && mkdir -p $NEXUS_WORK && chmod -R 777 $NEXUS_WORK \
-   && mkdir -p $NEXUS_REPOS && chmod -R 777 $NEXUS_REPOS 
+   && mkdir -p $NEXUS_REPOS && chmod -R 777 $NEXUS_REPOS
 
 RUN groupadd -r jboss -g 185 && useradd -u 185 -r -g jboss -m -d /home/jboss -s /sbin/nologin -c "JBoss user" jboss
 
@@ -40,7 +40,7 @@ COPY scripts/fixPermissions.sh /usr/local/bin/fixPermissions.sh
 COPY scripts/addrepo.sh /usr/local/bin/addrepo.sh
 COPY scripts/addjbossrepos.sh /usr/local/bin/addjbossrepos.sh
 
-RUN chmod 755 /usr/local/bin/fixPermissions.sh 
+RUN chmod 755 /usr/local/bin/fixPermissions.sh
 RUN chmod 755 /usr/local/bin/readinessProbe.sh
 RUN chmod 755 /usr/local/bin/addrepo.sh
 RUN chmod 755 /usr/local/bin/addjbossrepos.sh
@@ -50,10 +50,13 @@ RUN  /usr/local/bin/fixPermissions.sh $NEXUS_REPOS
 
 RUN mkdir /conf
 RUN /usr/local/bin/fixPermissions.sh /conf
+RUN /usr/local/bin/readinessProbe.sh /conf
+RUN /usr/local/bin/addjbossrepos.sh /conf
 
 # ADD nexus.xml as a workaround until post-deployment scripts work
 COPY scripts/nexus.xml $NEXUS_HOME/conf/
 RUN /usr/local/bin/fixPermissions.sh $NEXUS_HOME/conf
+RUN sh /usr/local/bin/addjbossrepos.sh
 
 USER jboss
 
